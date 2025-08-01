@@ -13,6 +13,16 @@ module RubyLLM
       extend Anthropic::Streaming
       extend Anthropic::Tools
 
+      def self.extended(base)
+        base.extend(Provider)
+        base.extend(Anthropic::Chat)
+        base.extend(Anthropic::Embeddings)
+        base.extend(Anthropic::Media)
+        base.extend(Anthropic::Models)
+        base.extend(Anthropic::Streaming)
+        base.extend(Anthropic::Tools)
+      end
+
       module_function
 
       def api_base(_config)
